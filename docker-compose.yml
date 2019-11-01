@@ -44,3 +44,5 @@ services:
       nproc: 65535
     networks:
       - elastic
+networks:
+  elastic:
