@@ -5,7 +5,7 @@ services:
     container_name: apigw1
     hostname: apigw1
     environment:
-      - apigw_elasticsearch_hosts=localhost:9200
+      - apigw_elasticsearch_hosts=daeigcs40716.eur.ad.sag:9200
     networks:
       - elastic
     ports:
@@ -16,7 +16,7 @@ services:
     container_name: apigw2
     hostname: apigw2
     environment:
-      - apigw_elasticsearch_hosts=localhost:9200
+      - apigw_elasticsearch_hosts=daeigcs40716.eur.ad.sag:9200
     networks:
       - elastic
     ports:
@@ -27,7 +27,7 @@ services:
     container_name: apigw3
     hostname: apigw3
     environment:
-      - apigw_elasticsearch_hosts=localhost:9200
+      - apigw_elasticsearch_hosts=daeigcs40716.eur.ad.sag:9200
     networks:
       - elastic
     ports:
