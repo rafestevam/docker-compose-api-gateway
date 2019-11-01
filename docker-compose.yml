@@ -1,0 +1,46 @@
+version: '3.7'
+services:
+  apigw1:
+    image: store/softwareag/apigateway-trial:10.5
+    container_name: apigw1
+    hostname: apigw1
+    environment:
+      - apigw_elasticsearch_hosts=localhost:9200
+    networks:
+      - elastic
+    ports:
+      - 5656:5555
+      - 7272:9072
+  apigw2:
+    image: store/softwareag/apigateway-trial:10.5
+    container_name: apigw2
+    hostname: apigw2
+    environment:
+      - apigw_elasticsearch_hosts=localhost:9200
+    networks:
+      - elastic
+    ports:
+      - 5757:5555
+      - 7373:9072
+  apigw3:
+    image: store/softwareag/apigateway-trial:10.5
+    container_name: apigw3
+    hostname: apigw3
+    environment:
+      - apigw_elasticsearch_hosts=localhost:9200
+    networks:
+      - elastic
+    ports:
+      - 5858:5555
+      - 7474:9072
+  nginx:
+    image: nginx:latest
+    ports:
+        - 8082:80
+    volumes:
+        - ${PWD}/nginx-config/:/etc/nginx/conf.d/
+    command: /bin/bash -c "nginx -g 'daemon off;'"
+    ulimits:
+      nproc: 65535
+    networks:
+      - elastic
